@@ -14,8 +14,11 @@ import org.springframework.core.io.ResourceLoader;
 
 /**
  * Properties文件载入工具类. 可载入多个properties文件, 相同的属性在最后载入的文件中的值将会覆盖之前的值，但以System的Property优先.
- * @author calvin
- * @version 2013-05-15
+ * @author pigo.can
+ * @email  rushingpig@163.com
+ * @homepage http://www.pigo.top
+ * @date   2015年11月3日 上午1:57:28
+ * @ver    V1.0
  */
 public class PropertiesLoaderHelper {
 

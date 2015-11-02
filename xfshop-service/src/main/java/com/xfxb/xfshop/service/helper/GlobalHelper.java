@@ -5,16 +5,23 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.DefaultResourceLoader;
 
 import com.google.common.collect.Maps;
 
 /**
- * 全局配置类
- * @author ThinkGem
- * @version 2014-06-25
+ * 全局配置和工具类
+ * @author pigo.can
+ * @email  rushingpig@163.com
+ * @homepage http://www.pigo.top
+ * @date   2015年11月3日 上午1:58:53
+ * @ver    V1.0
  */
 public class GlobalHelper {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(GlobalHelper.class);
 
 	/**
 	 * 当前对象实例
@@ -29,7 +36,7 @@ public class GlobalHelper {
 	/**
 	 * 属性文件加载对象
 	 */
-	private static PropertiesLoaderHelper loader = new PropertiesLoaderHelper("jeesite.properties");
+	private static PropertiesLoaderHelper loader = new PropertiesLoaderHelper("xfshop.properties");
 
 	/**
 	 * 显示/隐藏
@@ -151,7 +158,7 @@ public class GlobalHelper {
 				projectPath = file.toString();
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error("somewrong when loading the properties files...",e);
 		}
 		return projectPath;
     }

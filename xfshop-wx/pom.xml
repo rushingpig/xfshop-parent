@@ -18,6 +18,7 @@
 		<tomcat.version>2.2</tomcat.version>
 		<project-publish-name>/</project-publish-name>
 		<velocity.version>1.7</velocity.version>
+		<finalName>xfshop</finalName>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
@@ -89,7 +90,7 @@
 	<build>
 	
 	<!-- 项目最后的打包和发布名称 -->
-		<finalName>xfshop</finalName>
+		<finalName>${finalName}</finalName>
 		<!-- 对打包文件进行渲染,不要放进war里面，否则只有在打war的时候才生效 -->
 		<filters>
 			<filter>${basedir}/conf/${env}.properties</filter>

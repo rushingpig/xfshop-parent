@@ -3,10 +3,12 @@
 <mapper namespace="com.xfxb.xfshop.service.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.xfxb.xfshop.service.domain.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userAge" property="userage" jdbcType="INTEGER" />
+    <result column="userAddress" property="useraddress" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name
+    id, userName, userAge, userAddress
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +21,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.xfxb.xfshop.service.domain.User" >
-    insert into user (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into user (id, userName, userAge, 
+      userAddress)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userage,jdbcType=INTEGER}, 
+      #{useraddress,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xfxb.xfshop.service.domain.User" >
     insert into user
@@ -28,31 +32,51 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="userage != null" >
+        userAge,
+      </if>
+      <if test="useraddress != null" >
+        userAddress,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userage != null" >
+        #{userage,jdbcType=INTEGER},
+      </if>
+      <if test="useraddress != null" >
+        #{useraddress,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xfxb.xfshop.service.domain.User" >
     update user
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userage != null" >
+        userAge = #{userage,jdbcType=INTEGER},
+      </if>
+      <if test="useraddress != null" >
+        userAddress = #{useraddress,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xfxb.xfshop.service.domain.User" >
     update user
-    set name = #{name,jdbcType=VARCHAR}
+    set userName = #{username,jdbcType=VARCHAR},
+      userAge = #{userage,jdbcType=INTEGER},
+      userAddress = #{useraddress,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

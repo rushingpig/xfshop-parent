@@ -1,11 +1,13 @@
 package com.xfxb.xfshop.service.persistent;
 
+
 /**
- * 类似hibernate的Dialect,但只精简出分页部分
- *
- * @author poplar.yfyang
- * @version 1.0 2011-11-18 下午12:31
- * @since JDK 1.5
+ * 抽象出各个db的dialect，类似与精简的hibernate版
+ * @author pigo.can
+ * @email  rushingpig@163.com
+ * @homepage http://www.pigo.top
+ * @date   2015年11月3日 上午2:03:20
+ * @ver    V1.0
  */
 public interface Dialect {
 

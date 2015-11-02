@@ -3,7 +3,11 @@ package com.xfxb.xfshop.service.domain;
 public class User {
     private Integer id;
 
-    private String name;
+    private String username;
+
+    private Integer userage;
+
+    private String useraddress;
 
     public Integer getId() {
         return id;
@@ -13,11 +17,27 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public Integer getUserage() {
+        return userage;
+    }
+
+    public void setUserage(Integer userage) {
+        this.userage = userage;
+    }
+
+    public String getUseraddress() {
+        return useraddress;
+    }
+
+    public void setUseraddress(String useraddress) {
+        this.useraddress = useraddress == null ? null : useraddress.trim();
     }
 }

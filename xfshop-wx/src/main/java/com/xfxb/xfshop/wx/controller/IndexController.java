@@ -27,8 +27,8 @@ public class IndexController {
 	@RequestMapping("/hao")
 	public String renderName(@RequestParam Integer id,Model model){
 		User user = userService.getDbName(id);
-		model.addAttribute("name",user.getName());
-		model.addAttribute("dbName",user.getName());
+		model.addAttribute("name",user.getUsername());
+		model.addAttribute("dbName",user.getUsername());
 		return "pigo";
 	}
 }
