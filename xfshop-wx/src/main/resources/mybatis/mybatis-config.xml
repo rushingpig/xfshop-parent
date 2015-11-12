@@ -40,13 +40,13 @@
 	</settings>
 	
 	<!-- 类型别名 -->
-	<!-- <typeAliases>
-		<typeAlias alias="Page" type="com.thinkgem.jeesite.common.persistence.Page" />
-	</typeAliases> -->
+	<typeAliases>
+		<typeAlias alias="Page" type="com.xfxb.xfshop.service.persistent.Page" />
+	</typeAliases>
 	
-	<!-- 插件配置 -->
-	<!-- <plugins>
-		<plugin interceptor="com.thinkgem.jeesite.common.persistence.interceptor.PaginationInterceptor" />
-    </plugins> -->
+	<!-- 插件配置(分页) -->
+	<plugins>
+		<plugin interceptor="com.xfxb.xfshop.service.persistent.interceptor.PaginationInterceptor" />
+    </plugins>
 	
 </configuration>

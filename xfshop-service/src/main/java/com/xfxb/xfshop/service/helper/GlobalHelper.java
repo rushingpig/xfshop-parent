@@ -12,7 +12,7 @@ import org.springframework.core.io.DefaultResourceLoader;
 import com.google.common.collect.Maps;
 
 /**
- * 全局配置和工具类
+ * 全局配置和工具类(单例)
  * @author pigo.can
  * @email  rushingpig@163.com
  * @homepage http://www.pigo.top
@@ -26,7 +26,7 @@ public class GlobalHelper {
 	/**
 	 * 当前对象实例
 	 */
-	private static GlobalHelper global = new GlobalHelper();
+	private static final GlobalHelper global = new GlobalHelper();
 	
 	/**
 	 * 保存全局属性值
@@ -60,6 +60,8 @@ public class GlobalHelper {
 	 * 上传文件基础虚拟路径
 	 */
 	public static final String USERFILES_BASE_URL = "/userfiles/";
+	
+	private GlobalHelper(){}
 	
 	/**
 	 * 获取当前对象实例

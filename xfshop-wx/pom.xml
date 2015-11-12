@@ -79,6 +79,20 @@
 			<version>${velocity.version}</version>
 		</dependency>
 		
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${springmvc.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		
 		
 		<dependency>
 			<groupId>com.xfxb</groupId>

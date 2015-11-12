@@ -1,82 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xfxb.xfshop.service.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.xfxb.xfshop.service.domain.User" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userName" property="username" jdbcType="VARCHAR" />
-    <result column="userAge" property="userage" jdbcType="INTEGER" />
-    <result column="userAddress" property="useraddress" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, userName, userAge, userAddress
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.xfxb.xfshop.service.domain.User" >
-    insert into user (id, userName, userAge, 
-      userAddress)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userage,jdbcType=INTEGER}, 
-      #{useraddress,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.xfxb.xfshop.service.domain.User" >
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="username != null" >
-        userName,
-      </if>
-      <if test="userage != null" >
-        userAge,
-      </if>
-      <if test="useraddress != null" >
-        userAddress,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userage != null" >
-        #{userage,jdbcType=INTEGER},
-      </if>
-      <if test="useraddress != null" >
-        #{useraddress,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xfxb.xfshop.service.domain.User" >
-    update user
-    <set >
-      <if test="username != null" >
-        userName = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userage != null" >
-        userAge = #{userage,jdbcType=INTEGER},
-      </if>
-      <if test="useraddress != null" >
-        userAddress = #{useraddress,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xfxb.xfshop.service.domain.User" >
-    update user
-    set userName = #{username,jdbcType=VARCHAR},
-      userAge = #{userage,jdbcType=INTEGER},
-      userAddress = #{useraddress,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xfxb.xfshop.service.dao.UserMapper">
+<!-- 半自动映射，这样写，可以省略掉 -->
+	<sql id = "userColumns">
+		<trim suffixOverrides=",">
+			a.id,
+			a.name,
+			<!-- b.name as "role.name",
+			b.id as "role.id", 
+			或者用下面这种命名方式也行-->
+			b.name as role_name,
+			b.id as role_id,
+		</trim>
+	</sql>
+	<select id = "selectByPrimaryKey" parameterType = "Integer" resultType = "User">
+		select
+			<include refid = "userColumns"></include>
+		from user a,role b
+		where a.role_id = b.id
+			<trim prefix = "and">
+				 a.id = #{id}
+			</trim>
+	</select>
+	
+	<select id = "selectByPrimary" parameterType = "Integer" resultType = "map">
+		select * from user where id = #{id}
+	</select>
+	
+	<select id="list" parameterType="User" resultType="User">
+		select * from user order by name
+	</select>
+	
 </mapper>

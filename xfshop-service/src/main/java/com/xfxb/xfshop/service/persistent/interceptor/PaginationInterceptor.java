@@ -20,9 +20,12 @@ import com.xfxb.xfshop.service.persistent.Page;
 import com.xfxb.xfshop.service.utils.ReflectionUtils;
 
 /**
- * 数据库分页插件，只拦截查询语句.
- * @author poplar.yfyang / thinkgem
- * @version 2013-8-28
+ * Mybatis分页插件，主要拦截查询语句
+ * @author pigo.can
+ * @email  rushingpig@163.com
+ * @homepage http://www.pigo.top
+ * @date   2015年11月4日 下午9:33:23
+ * @ver    V1.0
  */
 @Intercepts({@Signature(type = Executor.class, method = "query",
         args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})

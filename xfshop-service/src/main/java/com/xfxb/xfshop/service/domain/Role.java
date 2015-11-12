@@ -4,17 +4,21 @@ package com.xfxb.xfshop.service.domain;
  * @author pigo.can
  * @email rushingpig@163.com
  * @homepage http://www.pigo.top
- * @date 2015年11月12日 下午10:05:04
+ * @date 2015年11月12日 下午10:05:33
  * @ver V1.0
  */
-public class User extends BaseDomain<User>{
+public class Role {
 
 	private Integer id;
 	private String name;
-	private Role role;
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Role() {
+		super();
+		
 	}
 
 	public void setId(Integer id) {
@@ -29,29 +33,15 @@ public class User extends BaseDomain<User>{
 		this.name = name;
 	}
 
-	public Role getRole() {
-		return role;
+	@Override
+	public String toString() {
+		return "RoleBean [id=" + id + ", name=" + name + "]";
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public User(Integer id, String name, Role role) {
+	public Role(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.role = role;
-	}
-
-	public User() {
-		super();
-		
-	}
-
-	@Override
-	public String toString() {
-		return "UserBean [id=" + id + ", name=" + name + ", role=" + role + "]";
 	}
 
 }

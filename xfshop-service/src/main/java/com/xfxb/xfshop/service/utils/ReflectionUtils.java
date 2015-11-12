@@ -15,7 +15,6 @@ import org.springframework.util.Assert;
 
 /**
  * 反射相关的工具类
- * @desc   
  * @author Pigo.can
  * @email  rushingpig@163.com
  * @date   2015年8月20日 下午2:13:02

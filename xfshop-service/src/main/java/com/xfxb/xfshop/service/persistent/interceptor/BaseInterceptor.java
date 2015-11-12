@@ -1,6 +1,3 @@
-/**
- * Copyright &copy; 2012-2014 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
 package com.xfxb.xfshop.service.persistent.interceptor;
 import java.io.Serializable;
 import java.util.Properties;
@@ -11,12 +8,16 @@ import org.apache.ibatis.plugin.Interceptor;
 
 import com.xfxb.xfshop.service.persistent.Dialect;
 import com.xfxb.xfshop.service.persistent.Page;
+import com.xfxb.xfshop.service.persistent.dialect.MySQLDialect;
 import com.xfxb.xfshop.service.utils.ReflectionUtils;
 
 /**
  * Mybatis分页拦截器基类
- * @author poplar.yfyang / thinkgem
- * @version 2013-8-28
+ * @author pigo.can
+ * @email  rushingpig@163.com
+ * @homepage http://www.pigo.top
+ * @date   2015年11月4日 下午9:27:38
+ * @ver    V1.0
  */
 public abstract class BaseInterceptor implements Interceptor, Serializable {
 	
@@ -86,9 +87,12 @@ public abstract class BaseInterceptor implements Interceptor, Serializable {
         }else if("sybase".equals(dbType)){
         	dialect = new SybaseDialect();
         }*/
-        if (dialect == null) {
+    	dialect = new MySQLDialect();
+    	
+    	// ************       此处先写死为mysql       ***************
+        /*if (dialect == null) {
             throw new RuntimeException("mybatis dialect error.");
-        }
+        }*/
         DIALECT = dialect;
 //        _SQL_PATTERN = p.getProperty("sqlPattern");
 //        _SQL_PATTERN = Global.getConfig("mybatis.pagePattern");
